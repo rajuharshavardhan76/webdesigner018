@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Signup - Webdesigner018</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Signup</h1>
+        <form id="signupForm">
+            <label for="newUsername">Username:</label>
+            <input type="text" id="newUsername" required><br><br>
+            
+            <label for="newPassword">Password:</label>
+            <input type="password" id="newPassword" required><br><br>
+            
+            <button type="submit">Signup</button>
+        </form>
+        <p id="message" style="color:green;"></p>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+        const signupForm = document.getElementById('signupForm');
+        signupForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+
+            if (newUsername && newPassword) {
+                localStorage.setItem('username', newUsername);
+                localStorage.setItem('password', newPassword);
+
+                document.getElementById('message').innerText = 'Signup successful! You can now login.';
+                signupForm.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
